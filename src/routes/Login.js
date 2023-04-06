@@ -1,12 +1,13 @@
 import { useLocation, useNavigate } from "react-router-dom";
 import { useAuth } from "../context/auth-context";
+import { Button, FormControl, FormLabel, Input } from "@chakra-ui/react";
 
 function Login() {
   const navigate = useNavigate();
   const location = useLocation();
   const { signin } = useAuth();
 
-  const from = location.state?.from?.pathname || "/";
+  const from = location.state?.from?.pathname || "/home";
 
   async function handleSubmit(event) {
     event.preventDefault();
@@ -21,17 +22,13 @@ function Login() {
 
   return (
     <div>
-      <p>Você precisa estar logado para ver a página {from}</p>
-
-      <form onSubmit={handleSubmit}>
-        <label>
-          email: <input name="email" type="text" />
-        </label>{" "}
-        <label>
-          senha: <input name="password" type="password" />
-        </label>{" "}
-        <button type="submit">Login</button>
-      </form>
+      <FormControl onSubmit={handleSubmit}>
+        <FormLabel>email:</FormLabel>
+        <Input id="email" name="email" type="text" />
+        <FormLabel>senha:</FormLabel>
+        <Input id="password" name="password" type="password" />
+        <Button type="submit">Login</Button>
+      </FormControl>
     </div>
   );
 }

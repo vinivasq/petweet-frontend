@@ -1,5 +1,7 @@
+import Login from "./Login";
+
 function PublicPage() {
-  return <h3>Public</h3>;
+  return <Login />;
 }
 
 export default PublicPage;

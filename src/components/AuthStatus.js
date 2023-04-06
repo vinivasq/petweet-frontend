@@ -6,7 +6,8 @@ function AuthStatus() {
   let navigate = useNavigate();
 
   if (!auth.user) {
-    return <p>Você não está logado.</p>;
+    console.log("Não logado");
+    return null;
   }
 
   return (

@@ -1,11 +1,5 @@
-import styled from "styled-components";
-
 function ProtectedPage() {
-  return <Title>Protected</Title>;
+  return <h3>Protected</h3>;
 }
-
-const Title = styled.h3`
-  color: blue;
-`;
 
 export default ProtectedPage;
