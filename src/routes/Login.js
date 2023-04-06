@@ -4,6 +4,7 @@ import { Button, FormControl, Input, Box, Stack } from "@chakra-ui/react";
 import Text from "../components/Text";
 import Label from "../components/Label";
 import Header from "../components/Header";
+import Footer from "../components/Footer";
 
 function Login() {
   const navigate = useNavigate();
@@ -65,6 +66,7 @@ function Login() {
           </FormControl>
         </Box>
       </main>
+      <Footer />
     </>
   );
 }
