@@ -1,4 +1,4 @@
-import { useLocation, useNavigate } from "react-router-dom";
+import { NavLink, useLocation, useNavigate } from "react-router-dom";
 import { useAuth } from "../context/auth-context";
 import { Button, FormControl, Input, Box, Stack } from "@chakra-ui/react";
 import Text from "../components/Text";
@@ -64,6 +64,15 @@ function Login() {
               Entrar
             </Button>
           </FormControl>
+          <Text lineHeight="1.5rem">
+            Ainda não possui uma conta? <br />
+            <NavLink
+              to="/signup"
+              style={{ textDecoration: "underline", color: "#00ACC1" }}
+            >
+              Cadastrar-se
+            </NavLink>
+          </Text>
         </Box>
       </main>
       <Footer />
