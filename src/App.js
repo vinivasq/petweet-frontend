@@ -4,6 +4,7 @@ import Login from "./routes/Login";
 import Layout from "./components/Layout";
 import PublicPage from "./routes/PublicPage";
 import ProtectedPage from "./routes/ProtectedPage";
+import Signup from "./routes/Signup";
 
 function App() {
   return (
@@ -12,6 +13,7 @@ function App() {
         <Route element={<Layout />}>
           <Route path="/" element={<PublicPage />} />
           <Route path="/login" element={<Login />} />
+          <Route path="/signup" element={<Signup />} />
           <Route
             path="/protected"
             element={

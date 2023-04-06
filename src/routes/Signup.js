@@ -1,38 +1,26 @@
-import { NavLink, useLocation, useNavigate } from "react-router-dom";
-import { useAuth } from "../context/auth-context";
-import { FormControl, Input, Box, Stack } from "@chakra-ui/react";
-import Text from "../components/Text";
-import Label from "../components/Label";
+import React from "react";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
+import { NavLink } from "react-router-dom";
+import Text from "../components/Text";
 import Button from "../components/Button";
+import { Box, FormControl, Input, Stack } from "@chakra-ui/react";
+import Label from "../components/Label";
 import PasswordInput from "../components/PasswordInput";
 
-function Login() {
-  const navigate = useNavigate();
-  const location = useLocation();
-  const { signin } = useAuth();
+const handleSubmit = (e) => {
+  e.preventDefault();
+  console.log("submit");
+};
 
-  const from = location.state?.from?.pathname || "/home";
-
-  async function handleSubmit(event) {
-    event.preventDefault();
-
-    const formData = new FormData(event.currentTarget);
-    const email = formData.get("email");
-    const password = formData.get("password");
-
-    await signin({ email, password });
-    navigate(from, { replace: true });
-  }
-
+const Signup = () => {
   return (
     <>
       <Header />
       <main>
         <Box padding="2rem" display="flex" flexDirection="column" gap="2rem">
           <Text as="h2" fontWeight="600" fontSize="1.5rem">
-            Login
+            Cadastro
           </Text>
           <FormControl
             as="form"
@@ -42,19 +30,32 @@ function Login() {
             gap="2rem"
           >
             <Stack>
+              <Label>Nome</Label>
+              <Input id="name" name="name" type="text" placeholder="Nome" />
+            </Stack>
+            <Stack>
               <Label>E-mail</Label>
               <Input id="email" name="email" type="text" placeholder="E-mail" />
             </Stack>
-            <PasswordInput />
+            <Stack>
+              <Label>Nome de usuário</Label>
+              <Input
+                id="username"
+                name="username"
+                type="text"
+                placeholder="Ex.: @billbulldog"
+              />
+            </Stack>
+            <PasswordInput helper="Deve conter no mínimo uma letra maiúscula e um número." />
             <Button>Entrar</Button>
           </FormControl>
           <Text lineHeight="1.5rem">
-            Ainda não possui uma conta? <br />
+            Já possui cadastro? <br />
             <NavLink
-              to="/signup"
+              to="/login"
               style={{ textDecoration: "underline", color: "#00ACC1" }}
             >
-              Cadastrar-se
+              Faça login
             </NavLink>
           </Text>
         </Box>
@@ -62,6 +63,6 @@ function Login() {
       <Footer />
     </>
   );
-}
+};
 
-export default Login;
+export default Signup;
