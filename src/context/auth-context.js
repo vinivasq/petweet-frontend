@@ -1,7 +1,7 @@
 import { createContext, useState, useContext } from "react";
 import { useLocation, Navigate } from "react-router-dom";
 
-import { setInStorage, login } from "../services/auth";
+import { setInStorage, login, signUp } from "../services/auth";
 
 const AuthContext = createContext(null);
 
@@ -25,13 +25,22 @@ export function AuthProvider({ children }) {
     }
   };
 
+  const signup = async (data) => {
+    try {
+      await signUp(data);
+    } catch (error) {
+      console.log(error);
+      alert("Não foi possível realizar o cadastro");
+    }
+  };
+
   const signout = () => {
     localStorage.clear();
     setUser(null);
   };
 
   return (
-    <AuthContext.Provider value={{ user, signin, signout }}>
+    <AuthContext.Provider value={{ user, signin, signout, signup }}>
       {children}
     </AuthContext.Provider>
   );

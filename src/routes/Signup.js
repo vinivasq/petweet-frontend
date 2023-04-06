@@ -1,19 +1,32 @@
 import React from "react";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import Text from "../components/Text";
 import Button from "../components/Button";
 import { Box, FormControl, Input, Stack } from "@chakra-ui/react";
 import Label from "../components/Label";
 import PasswordInput from "../components/PasswordInput";
-
-const handleSubmit = (e) => {
-  e.preventDefault();
-  console.log("submit");
-};
+import { useAuth } from "../context/auth-context";
 
 const Signup = () => {
+  const { signup, signin } = useAuth();
+  const navigate = useNavigate();
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    const formData = new FormData(e.currentTarget);
+    const name = formData.get("name");
+    const email = formData.get("email");
+    const username = formData.get("username");
+    const password = formData.get("password");
+
+    await signup({ name, email, username, password });
+    await signin({ email, password });
+
+    navigate("/home");
+  };
+
   return (
     <>
       <Header />
