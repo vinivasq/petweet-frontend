@@ -3,9 +3,8 @@ import Text from "./Text";
 import ProfilePic from "../assets/images/doggos/userpic.png";
 import {
   Box,
+  Icon,
   Image,
-  ListIcon,
-  ListItem,
   Modal,
   ModalBody,
   ModalContent,
@@ -13,11 +12,11 @@ import {
   ModalHeader,
   ModalOverlay,
   Stack,
-  UnorderedList,
   useDisclosure,
 } from "@chakra-ui/react";
 import { SignOut } from "@phosphor-icons/react";
 import Button from "./Button";
+import MenuLink from "./MenuLink";
 
 const SignOutLogo = () => {
   return <SignOut size={18} color="#00ACC1" />;
@@ -33,38 +32,44 @@ const Menu = () => {
       alignItems="center"
       width="70%"
       height="100vh"
-      zIndex="2"
       backgroundColor="white"
     >
-      <Image src={ProfilePic} padding="2.5rem" />
-      <UnorderedList
-        margin={0}
-        width="100%"
-        listStyleType="none"
-        display="flex"
-        flexDirection="column"
-        alignItems="center"
-        justifyContent="center"
-        gap="2.5rem"
-      >
-        <Stack textAlign="center" width="100%">
-          <ListItem>
-            <Text>Home</Text>
-          </ListItem>
-          <ListItem>
-            <Text>Meu Perfil</Text>
-          </ListItem>
-        </Stack>
-        <ListItem
+      <Image
+        src={ProfilePic}
+        margin="2.5rem"
+        boxShadow="0px 1px 3px #0000006b"
+        borderRadius="full"
+      />
+      <nav style={{ width: "100%" }}>
+        <Box
+          margin={0}
+          width="100%"
           display="flex"
+          flexDirection="column"
           alignItems="center"
-          gap="0.5rem"
-          onClick={onOpen}
+          justifyContent="center"
+          gap="2.5rem"
         >
-          <ListIcon as={SignOutLogo} />
-          <Text>Sair</Text>
-        </ListItem>
-      </UnorderedList>
+          <Stack textAlign="center" width="100%">
+            <MenuLink>
+              <Text>Home</Text>
+            </MenuLink>
+            <MenuLink>
+              <Text>Meu Perfil</Text>
+            </MenuLink>
+          </Stack>
+          <MenuLink
+            display="flex"
+            alignItems="center"
+            justifyContent="center"
+            gap="0.5rem"
+            onClick={onOpen}
+          >
+            <Icon as={SignOutLogo} />
+            <Text>Sair</Text>
+          </MenuLink>
+        </Box>
+      </nav>
       <Modal isOpen={isOpen} onClose={onClose}>
         <ModalOverlay />
         <ModalContent
