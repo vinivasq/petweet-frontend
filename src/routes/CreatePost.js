@@ -1,6 +1,7 @@
-import { Box } from "@chakra-ui/react";
+import { Box, Image, Textarea } from "@chakra-ui/react";
 import React from "react";
 import Text from "../components/Text";
+import ProfilePic from "../assets/images/doggos/userpic.png";
 import { Link } from "react-router-dom";
 import Button from "../components/Button";
 
@@ -8,7 +9,7 @@ const CreatePost = () => {
   return (
     <>
       <Box
-        boxShadow="0px 1px 3px #00000030"
+        boxShadow="0px 1px 3px #00000020"
         display="flex"
         alignItems="center"
         justifyContent="space-between"
@@ -25,6 +26,22 @@ const CreatePost = () => {
           </Text>
           <Button borderRadius="0.625rem">Petwittar</Button>
         </Box>
+      </Box>
+      <Box padding="0.375rem 1rem" display="flex">
+        <Image
+          src={ProfilePic}
+          alt="Foto de perfil"
+          boxSize={37}
+          borderRadius="full"
+        />
+        <Textarea
+          border="none"
+          outline="none"
+          resize="none"
+          focusBorderColor="transparent"
+          placeholder="O que está acontecendo?"
+          fontFamily="Open Sans"
+        />
       </Box>
     </>
   );
