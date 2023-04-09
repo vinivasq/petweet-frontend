@@ -13,22 +13,20 @@ const Navbar = () => {
 
   return (
     <>
-      <header>
-        <Box
-          display="flex"
-          position="fixed"
-          left="0"
-          right="0"
-          top="0"
-          alignItems="center"
-          justifyContent="center"
-          padding="1rem"
-          boxShadow="0px 1px 4px #00000057"
-        >
-          <MenuButton onClick={handleMenu} />
-          <Logo style={{ height: "1.75rem" }} />
-        </Box>
-      </header>
+      <Box
+        display="flex"
+        position="fixed"
+        left="0"
+        right="0"
+        top="0"
+        alignItems="center"
+        justifyContent="center"
+        padding="1rem"
+        boxShadow="0px 1px 4px #00000057"
+      >
+        <MenuButton onClick={handleMenu} />
+        <Logo style={{ height: "1.75rem" }} />
+      </Box>
       {isOpen && (
         <Box
           position="fixed"

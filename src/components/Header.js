@@ -6,13 +6,9 @@ import Text from "./Text";
 
 const Header = () => {
   return (
-    <header style={{ marginBottom: "12.625rem" }}>
+    <header>
       <Box
         display="flex"
-        position="absolute"
-        top="0"
-        right="0"
-        left="0"
         flexDirection="column"
         gap="2.438rem"
         height="16.375rem"

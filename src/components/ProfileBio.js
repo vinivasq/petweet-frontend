@@ -1,11 +1,12 @@
 import { Box, Image } from "@chakra-ui/react";
 import ProfilePic from "../assets/images/doggos/userpic.png";
+import "../index.css";
 import React from "react";
 import Text from "./Text";
 
 const ProfileBio = () => {
   return (
-    <Box>
+    <Box className="wrapper wrapper-top">
       <Box
         display="flex"
         alignItems="center"

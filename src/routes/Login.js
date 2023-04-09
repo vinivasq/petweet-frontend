@@ -1,6 +1,7 @@
 import { NavLink, useLocation, useNavigate } from "react-router-dom";
 import { useAuth } from "../context/auth-context";
 import { FormControl, Input, Box, Stack } from "@chakra-ui/react";
+import "../index.css";
 import Text from "../components/Text";
 import Label from "../components/Label";
 import Header from "../components/Header";
@@ -30,7 +31,14 @@ function Login() {
     <>
       <Header />
       <main>
-        <Box padding="2rem 0" display="flex" flexDirection="column" gap="2rem">
+        <Box
+          className="wrapper"
+          display="flex"
+          flexDirection="column"
+          gap="2rem"
+          paddingTop="2rem"
+          paddingBottom="2rem"
+        >
           <Text as="h2" fontWeight="600" fontSize="1.5rem">
             Login
           </Text>

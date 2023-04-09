@@ -31,7 +31,14 @@ const Signup = () => {
     <>
       <Header />
       <main>
-        <Box padding="2rem 0" display="flex" flexDirection="column" gap="2rem">
+        <Box
+          display="flex"
+          flexDirection="column"
+          className="wrapper"
+          paddingTop="2rem"
+          paddingBottom="2rem"
+          gap="2rem"
+        >
           <Text as="h2" fontWeight="600" fontSize="1.5rem">
             Cadastro
           </Text>
