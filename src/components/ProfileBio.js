@@ -6,7 +6,7 @@ import Text from "./Text";
 
 const ProfileBio = () => {
   return (
-    <Box className="wrapper wrapper-top">
+    <Box className="wrapper wrapper-top" boxShadow="0px 1px 3px #00000040">
       <Box
         display="flex"
         alignItems="center"

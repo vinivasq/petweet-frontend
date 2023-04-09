@@ -22,7 +22,7 @@ const Navbar = () => {
         alignItems="center"
         justifyContent="center"
         padding="1rem"
-        boxShadow="0px 1px 4px #00000057"
+        boxShadow="0px 1px 3px #00000030"
       >
         <MenuButton onClick={handleMenu} />
         <Logo style={{ height: "1.75rem" }} />
