@@ -4,6 +4,7 @@ import Login from "./routes/Login";
 import Layout from "./components/Layout";
 import Home from "./routes/Home";
 import Signup from "./routes/Signup";
+import Profile from "./routes/Profile";
 
 function App() {
   return (
@@ -16,11 +17,12 @@ function App() {
           <Route
             path="/home"
             element={
-              <RequireAuth>
-                <Home />
-              </RequireAuth>
+              // <RequireAuth>
+              <Home />
+              // </RequireAuth>
             }
           />
+          <Route path="/profile" element={<Profile />} />
         </Route>
       </Routes>
     </AuthProvider>

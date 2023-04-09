@@ -51,10 +51,10 @@ const Menu = () => {
           gap="2.5rem"
         >
           <Stack textAlign="center" width="100%">
-            <MenuLink>
+            <MenuLink to="/home">
               <Text>Home</Text>
             </MenuLink>
-            <MenuLink>
+            <MenuLink to="/profile">
               <Text>Meu Perfil</Text>
             </MenuLink>
           </Stack>

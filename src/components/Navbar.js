@@ -9,7 +9,6 @@ const Navbar = () => {
 
   const handleMenu = () => {
     setIsOpen(!isOpen);
-    console.log(isOpen);
   };
 
   return (
