@@ -10,7 +10,7 @@ const MenuLink = (props) => {
       borderLeft="4px solid transparent"
       borderRadius="2px"
       transition="all 300ms"
-      width="100%"
+      width="calc(100% - 4px)"
       _hover={{
         borderColor: "#00ACC1",
         backgroundColor: "#00acc133",
