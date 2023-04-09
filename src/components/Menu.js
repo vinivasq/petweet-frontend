@@ -94,10 +94,10 @@ const Menu = () => {
             justifyContent="space-between"
             gap=".75rem"
           >
-            <Button borderRadius="0.625rem" width="9.125rem" variant="outline">
+            <Button borderRadius="0.625rem" variant="outline" width="50%">
               Sair
             </Button>
-            <Button onClick={onClose} borderRadius="0.625rem" width="9.125rem">
+            <Button borderRadius="0.625rem" onClick={onClose} width="50%">
               Cancelar
             </Button>
           </ModalFooter>
