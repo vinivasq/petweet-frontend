@@ -5,6 +5,7 @@ import Layout from "./components/Layout";
 import Home from "./routes/Home";
 import Signup from "./routes/Signup";
 import Profile from "./routes/Profile";
+import CreatePost from "./routes/CreatePost";
 
 function App() {
   return (
@@ -17,12 +18,27 @@ function App() {
           <Route
             path="/home"
             element={
-              // <RequireAuth>
-              <Home />
-              // </RequireAuth>
+              <RequireAuth>
+                <Home />
+              </RequireAuth>
             }
           />
-          <Route path="/profile" element={<Profile />} />
+          <Route
+            path="/profile"
+            element={
+              <RequireAuth>
+                <Profile />
+              </RequireAuth>
+            }
+          />
+          <Route
+            path="/createPost"
+            element={
+              <RequireAuth>
+                <CreatePost />
+              </RequireAuth>
+            }
+          />
         </Route>
       </Routes>
     </AuthProvider>
