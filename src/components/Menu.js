@@ -28,6 +28,8 @@ const Menu = () => {
   return (
     <Box
       display="flex"
+      position="fixed"
+      left="0"
       flexDirection="column"
       alignItems="center"
       width="70%"

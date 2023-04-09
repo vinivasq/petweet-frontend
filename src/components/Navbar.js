@@ -13,9 +13,13 @@ const Navbar = () => {
 
   return (
     <>
-      <header style={{ display: "float" }}>
+      <header>
         <Box
           display="flex"
+          position="fixed"
+          left="0"
+          right="0"
+          top="0"
           alignItems="center"
           justifyContent="center"
           padding="1rem"
@@ -35,7 +39,13 @@ const Navbar = () => {
           backgroundColor="#00000075"
         >
           <Menu />
-          <Box width="30%" height="100vh" onClick={handleMenu}></Box>
+          <Box
+            position="fixed"
+            right="0"
+            width="30%"
+            height="100vh"
+            onClick={handleMenu}
+          ></Box>
         </Box>
       )}
     </>
