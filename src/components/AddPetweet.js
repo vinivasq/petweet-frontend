@@ -15,6 +15,7 @@ const AddPetweet = (props) => {
       position="fixed"
       right="1rem"
       transition="all 300ms"
+      zIndex="1"
       _hover={{
         opacity: ".8",
       }}

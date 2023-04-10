@@ -14,6 +14,8 @@ const Navbar = () => {
   return (
     <>
       <Box
+        backgroundColor="white"
+        boxShadow="0px 1px 3px #00000030"
         display="flex"
         position="fixed"
         left="0"
@@ -22,9 +24,12 @@ const Navbar = () => {
         alignItems="center"
         justifyContent="center"
         padding="1rem"
-        boxShadow="0px 1px 3px #00000030"
+        zIndex="1"
       >
-        <MenuButton onClick={handleMenu} />
+        <MenuButton
+          _hover={{ backgroundColor: "transparent" }}
+          onClick={handleMenu}
+        />
         <Logo style={{ height: "1.75rem" }} />
       </Box>
       {isOpen && (
@@ -35,6 +40,7 @@ const Navbar = () => {
           bottom="0"
           width="100vw"
           backgroundColor="#00000075"
+          zIndex="2"
         >
           <Menu />
           <Box
