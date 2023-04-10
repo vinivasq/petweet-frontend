@@ -17,6 +17,7 @@ import {
 import { SignOut } from "@phosphor-icons/react";
 import Button from "./Button";
 import MenuLink from "./MenuLink";
+import { useAuth } from "../context/auth-context";
 
 const SignOutLogo = () => {
   return <SignOut size={18} color="#00ACC1" />;
@@ -24,6 +25,7 @@ const SignOutLogo = () => {
 
 const Menu = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
+  const auth = useAuth();
 
   return (
     <Box
@@ -96,7 +98,14 @@ const Menu = () => {
             justifyContent="space-between"
             gap=".75rem"
           >
-            <Button borderRadius="0.625rem" variant="outline" width="50%">
+            <Button
+              borderRadius="0.625rem"
+              variant="outline"
+              width="50%"
+              onClick={() => {
+                auth.signout();
+              }}
+            >
               Sair
             </Button>
             <Button borderRadius="0.625rem" onClick={onClose} width="50%">
