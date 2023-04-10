@@ -3,8 +3,11 @@ import ProfilePic from "../assets/images/doggos/userpic.png";
 import "../index.css";
 import React from "react";
 import Text from "./Text";
+import { useAuth } from "../context/auth-context";
 
 const ProfileBio = () => {
+  const { user } = useAuth();
+
   return (
     <Box className="wrapper wrapper-top" boxShadow="0px 1px 3px #00000040">
       <Box
@@ -23,10 +26,10 @@ const ProfileBio = () => {
         />
         <Box width="">
           <Text as="h1" fontSize="1.375rem" fontWeight="700">
-            Bill Bulldog
+            {user.name}
           </Text>
           <Text letterSpacing="-0.3px" color="#687684">
-            @billthebulldog2022
+            @{user.username}
           </Text>
         </Box>
       </Box>
