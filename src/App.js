@@ -18,25 +18,25 @@ function App() {
           <Route
             path="/home"
             element={
-              <RequireAuth>
-                <Home />
-              </RequireAuth>
+              // <RequireAuth>
+              <Home />
+              // </RequireAuth>
             }
           />
           <Route
             path="/profile"
             element={
-              <RequireAuth>
-                <Profile />
-              </RequireAuth>
+              // <RequireAuth>
+              <Profile />
+              // </RequireAuth>
             }
           />
           <Route
             path="/createPost"
             element={
-              <RequireAuth>
-                <CreatePost />
-              </RequireAuth>
+              // <RequireAuth>
+              <CreatePost />
+              // </RequireAuth>
             }
           />
         </Route>

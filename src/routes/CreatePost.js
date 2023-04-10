@@ -40,6 +40,7 @@ const CreatePost = () => {
           resize="none"
           focusBorderColor="transparent"
           placeholder="O que está acontecendo?"
+          _placeholder={{ color: "#687684" }}
           fontFamily="Open Sans"
         />
       </Box>
