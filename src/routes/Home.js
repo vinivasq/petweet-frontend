@@ -15,7 +15,7 @@ const Home = () => {
         <Navbar />
       </header>
       <main>
-        <AddPetweet to="/createPost" />
+        <AddPetweet to="/createPost" state={{ from: "/home" }} />
         <Box className="wrapper-top">
           <Petweet
             classname

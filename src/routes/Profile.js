@@ -9,7 +9,7 @@ const Profile = () => {
       <header>
         <Navbar />
         <ProfileBio />
-        <AddPetweet />
+        <AddPetweet to="/createPost" state={{ from: "/profile" }} />
       </header>
     </>
   );

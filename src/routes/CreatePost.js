@@ -2,7 +2,7 @@ import { Box, Image, Textarea } from "@chakra-ui/react";
 import React, { useState } from "react";
 import Text from "../components/Text";
 import ProfilePic from "../assets/images/doggos/userpic.png";
-import { Link, useLocation, useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import Button from "../components/Button";
 import { useAuth } from "../context/auth-context";
 import { createPost } from "../services/post";
@@ -12,14 +12,14 @@ const CreatePost = () => {
   const location = useLocation();
   const navigate = useNavigate();
   const [count, setCount] = useState(0);
-  const from = location.state?.from?.pathname || "/home";
+  const from = location.state?.from;
   let content = document.getElementById("content")?.value;
 
   const handlePetweet = async (data) => {
     try {
       await createPost(data);
       content = "";
-      navigate(from);
+      navigate(from, { replace: true });
     } catch (error) {
       console.log(error);
     }
@@ -34,11 +34,16 @@ const CreatePost = () => {
         justifyContent="space-between"
         padding="1rem"
       >
-        <Link to="/home">
-          <Text fontWeight="300" fontSize="0.75rem" color="#424242">
-            Cancelar
-          </Text>
-        </Link>
+        <Text
+          fontWeight="300"
+          fontSize="0.75rem"
+          color="#424242"
+          onClick={() => {
+            navigate(from, { replace: true });
+          }}
+        >
+          Cancelar
+        </Text>
         <Box display="flex" alignItems="center" gap="0.875rem">
           <Text color="#828282" fontSize="0.875rem">
             {count}/140
@@ -62,6 +67,7 @@ const CreatePost = () => {
         />
         <Textarea
           id="content"
+          autoFocus={true}
           border="none"
           resize="none"
           focusBorderColor="transparent"
