@@ -2,13 +2,28 @@ import { Box, Image, Textarea } from "@chakra-ui/react";
 import React, { useState } from "react";
 import Text from "../components/Text";
 import ProfilePic from "../assets/images/doggos/userpic.png";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import Button from "../components/Button";
 import { useAuth } from "../context/auth-context";
+import { createPost } from "../services/post";
 
 const CreatePost = () => {
   const { user } = useAuth();
+  const location = useLocation();
+  const navigate = useNavigate();
   const [count, setCount] = useState(0);
+  const from = location.state?.from?.pathname || "/home";
+  let content = document.getElementById("content")?.value;
+
+  const handlePetweet = async (data) => {
+    try {
+      await createPost(data);
+      content = "";
+      navigate(from);
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   return (
     <>
@@ -28,7 +43,12 @@ const CreatePost = () => {
           <Text color="#828282" fontSize="0.875rem">
             {count}/140
           </Text>
-          <Button borderRadius="0.625rem" onClick={() => console.log(user.id)}>
+          <Button
+            borderRadius="0.625rem"
+            onClick={() => {
+              handlePetweet({ userId: user.id, content });
+            }}
+          >
             Petwittar
           </Button>
         </Box>
@@ -41,8 +61,8 @@ const CreatePost = () => {
           borderRadius="full"
         />
         <Textarea
+          id="content"
           border="none"
-          outline="none"
           resize="none"
           focusBorderColor="transparent"
           placeholder="O que está acontecendo?"
