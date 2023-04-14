@@ -1,14 +1,28 @@
-import React from "react";
-import niko from "../assets/images/doggos/niko.png";
+import React, { useEffect, useState } from "react";
+import userPic from "../assets/images/default-user-icon.jpg";
 import "../index.css";
 import Navbar from "../components/Navbar";
 import AddPetweet from "../components/AddPetweet";
 import Petweet from "../components/Petweet";
 import { Box } from "@chakra-ui/layout";
-
-const content = `Name a show where the lead character is the worst character on the show I’ll get Sabrina Spellman. Name a show where the lead character is the worst character on the show I’ll get Sabrina Spellman. `;
+import { getAllPosts } from "../services/post";
 
 const Home = () => {
+  const [posts, setPosts] = useState([]);
+
+  useEffect(() => {
+    const getPosts = async () => {
+      try {
+        const postsResponse = await getAllPosts();
+        setPosts(postsResponse.data);
+      } catch (error) {
+        console.log(error);
+        alert("Não foi possivel listar os Posts");
+      }
+    };
+    getPosts();
+  }, []);
+
   return (
     <>
       <header>
@@ -17,12 +31,16 @@ const Home = () => {
       <main>
         <AddPetweet to="/createPost" state={{ from: "/home" }} />
         <Box className="wrapper-top">
-          <Petweet
-            classname
-            image={niko}
-            user={{ name: "Niko Viralata", username: "@doguinhoniko_20" }}
-            content={content}
-          />
+          {posts.map((post, i) => {
+            return (
+              <Petweet
+                key={i}
+                image={userPic}
+                userId={post.userId}
+                content={post.content}
+              />
+            );
+          })}
         </Box>
       </main>
     </>
