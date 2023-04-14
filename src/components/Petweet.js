@@ -61,7 +61,7 @@ const Petweet = (props) => {
                 {user.name}
               </Text>
               <Text fontWeight="300" fontSize="0.75rem" color="#757575">
-                {user.username}
+                @{user.username}
               </Text>
             </CardHeader>
             <CardBody padding={0}>
