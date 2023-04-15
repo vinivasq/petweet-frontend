@@ -58,7 +58,7 @@ const Menu = () => {
             <MenuLink to="/home">
               <Text>Home</Text>
             </MenuLink>
-            <MenuLink to="/profile">
+            <MenuLink to={`/profile?${auth.user.username}`}>
               <Text>Meu Perfil</Text>
             </MenuLink>
           </Stack>

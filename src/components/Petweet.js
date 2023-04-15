@@ -20,9 +20,7 @@ const Petweet = (props) => {
       }
     };
     getUser(userId);
-  }, [isLoading]);
-
-  console.log(user);
+  }, []);
 
   return (
     <>
