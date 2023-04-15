@@ -1,10 +1,11 @@
 import { Card, CardBody, CardHeader } from "@chakra-ui/card";
 import { Image, Stack } from "@chakra-ui/react";
+import { ptBR } from "date-fns/locale";
+import { Link } from "react-router-dom";
+import { formatDistanceToNow } from "date-fns";
 import React, { useEffect, useState } from "react";
 import Text from "./Text";
 import { getUserById } from "../services/user";
-import { formatDistanceToNow } from "date-fns";
-import { ptBR } from "date-fns/locale";
 
 const Petweet = (props) => {
   const { image, post } = props;
@@ -17,8 +18,6 @@ const Petweet = (props) => {
       locale: ptBR,
     });
   };
-
-  console.log(timeAgo(post.createdAt));
 
   useEffect(() => {
     const getUser = async (userId) => {
@@ -67,7 +66,7 @@ const Petweet = (props) => {
                 fontSize="0.875rem"
                 fontWeight="700"
               >
-                {user.name}
+                <Link to={`/profile?${user.username}`}>{user.name}</Link>
               </Text>
               <Text fontWeight="300" fontSize="0.75rem" color="#757575">
                 @{user.username}
