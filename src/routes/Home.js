@@ -32,14 +32,7 @@ const Home = () => {
         <AddPetweet to="/createPost" state={{ from: "/home" }} />
         <Box className="wrapper-top">
           {posts.map((post, i) => {
-            return (
-              <Petweet
-                key={i}
-                image={userPic}
-                userId={post.userId}
-                content={post.content}
-              />
-            );
+            return <Petweet key={i} image={userPic} post={post} />;
           })}
         </Box>
       </main>

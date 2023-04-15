@@ -46,14 +46,7 @@ const Profile = () => {
           <main>
             <Box marginTop="1px">
               {posts.map((post, i) => {
-                return (
-                  <Petweet
-                    key={i}
-                    image={profilePic}
-                    userId={post.userId}
-                    content={post.content}
-                  />
-                );
+                return <Petweet key={i} image={profilePic} post={post} />;
               })}
             </Box>
           </main>

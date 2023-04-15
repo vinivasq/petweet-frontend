@@ -3,11 +3,22 @@ import { Image, Stack } from "@chakra-ui/react";
 import React, { useEffect, useState } from "react";
 import Text from "./Text";
 import { getUserById } from "../services/user";
+import { formatDistanceToNow } from "date-fns";
+import { ptBR } from "date-fns/locale";
 
 const Petweet = (props) => {
-  const { image, userId, content } = props;
+  const { image, post } = props;
   const [user, setUser] = useState(null);
   const [isLoading, setLoading] = useState(true);
+
+  const timeAgo = (date) => {
+    return formatDistanceToNow(new Date(date), {
+      addSuffix: true,
+      locale: ptBR,
+    });
+  };
+
+  console.log(timeAgo(post.createdAt));
 
   useEffect(() => {
     const getUser = async (userId) => {
@@ -19,7 +30,7 @@ const Petweet = (props) => {
         console.log(error);
       }
     };
-    getUser(userId);
+    getUser(post.userId);
   }, []);
 
   return (
@@ -61,9 +72,15 @@ const Petweet = (props) => {
               <Text fontWeight="300" fontSize="0.75rem" color="#757575">
                 @{user.username}
               </Text>
+              <Text fontWeight="300" fontSize="0.625rem" color="#757575">
+                •
+              </Text>
+              <Text fontWeight="300" fontSize="0.75rem" color="#757575">
+                {timeAgo(post.createdAt)}
+              </Text>
             </CardHeader>
             <CardBody padding={0}>
-              <Text fontSize="0.875rem">{content}</Text>
+              <Text fontSize="0.875rem">{post.content}</Text>
             </CardBody>
           </Stack>
         </Card>
