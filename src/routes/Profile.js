@@ -1,13 +1,13 @@
+import { Box } from "@chakra-ui/react";
+import { useLocation } from "react-router-dom";
 import React, { useEffect, useState } from "react";
+import { getUserPosts } from "../services/post";
+import { getUserByUsername } from "../services/user";
 import Navbar from "../components/Navbar";
 import ProfileBio from "../components/ProfileBio";
 import AddPetweet from "../components/AddPetweet";
 import profilePic from "../assets/images/doggos/userpic.png";
-import { getUserPosts } from "../services/post";
 import Petweet from "../components/Petweet";
-import { Box } from "@chakra-ui/react";
-import { useLocation } from "react-router-dom";
-import { getUserByUsername } from "../services/user";
 
 const Profile = () => {
   const [isLoading, setLoading] = useState(true);
@@ -30,7 +30,7 @@ const Profile = () => {
     };
 
     handleProfile(username);
-  }, []);
+  }, [username]);
 
   return (
     <>

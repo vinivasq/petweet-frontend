@@ -1,6 +1,6 @@
+import { Box } from "@chakra-ui/react";
 import React, { useState } from "react";
 import { ReactComponent as Logo } from "../assets/images/logo.svg";
-import { Box } from "@chakra-ui/react";
 import MenuButton from "./MenuButton";
 import Menu from "./Menu";
 

@@ -1,5 +1,5 @@
-import React from "react";
 import { Button as ChakraButton } from "@chakra-ui/react";
+import React from "react";
 
 const Button = (props) => {
   const { variant, ...rest } = props;

@@ -1,8 +1,8 @@
 import { Box, Image } from "@chakra-ui/react";
-import ProfilePic from "../assets/images/doggos/userpic.png";
-import "../index.css";
 import React from "react";
+import ProfilePic from "../assets/images/doggos/userpic.png";
 import Text from "./Text";
+import "../index.css";
 
 const ProfileBio = (props) => {
   const { user } = props;

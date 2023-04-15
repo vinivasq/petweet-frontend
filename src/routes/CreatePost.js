@@ -1,11 +1,11 @@
 import { Box, Image, Textarea } from "@chakra-ui/react";
-import React, { useState } from "react";
-import Text from "../components/Text";
-import ProfilePic from "../assets/images/doggos/userpic.png";
 import { useLocation, useNavigate } from "react-router-dom";
-import Button from "../components/Button";
+import React, { useState } from "react";
 import { useAuth } from "../context/auth-context";
 import { createPost } from "../services/post";
+import Text from "../components/Text";
+import Button from "../components/Button";
+import ProfilePic from "../assets/images/doggos/userpic.png";
 
 const CreatePost = () => {
   const { user } = useAuth();

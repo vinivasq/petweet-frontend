@@ -6,9 +6,9 @@ import {
   InputRightElement,
   Box,
 } from "@chakra-ui/react";
+import { ViewIcon, ViewOffIcon } from "@chakra-ui/icons";
 import React, { useState } from "react";
 import Label from "./Label";
-import { ViewIcon, ViewOffIcon } from "@chakra-ui/icons";
 
 const PasswordInput = (props) => {
   const { helper } = props;

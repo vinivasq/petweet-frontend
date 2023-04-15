@@ -1,11 +1,11 @@
+import { Box } from "@chakra-ui/layout";
 import React, { useEffect, useState } from "react";
+import { getAllPosts } from "../services/post";
 import userPic from "../assets/images/default-user-icon.jpg";
-import "../index.css";
 import Navbar from "../components/Navbar";
 import AddPetweet from "../components/AddPetweet";
 import Petweet from "../components/Petweet";
-import { Box } from "@chakra-ui/layout";
-import { getAllPosts } from "../services/post";
+import "../index.css";
 
 const Home = () => {
   const [posts, setPosts] = useState([]);

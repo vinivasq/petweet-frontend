@@ -1,7 +1,7 @@
 import { Box } from "@chakra-ui/react";
+import React from "react";
 import { ReactComponent as LogoSymbol } from "../assets/images/symbol.svg";
 import banner from "../assets/images/banner.png";
-import React from "react";
 import Text from "./Text";
 
 const Header = () => {

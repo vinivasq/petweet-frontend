@@ -4,8 +4,8 @@ import { ptBR } from "date-fns/locale";
 import { Link } from "react-router-dom";
 import { formatDistanceToNow } from "date-fns";
 import React, { useEffect, useState } from "react";
-import Text from "./Text";
 import { getUserById } from "../services/user";
+import Text from "./Text";
 
 const Petweet = (props) => {
   const { image, post } = props;
@@ -19,6 +19,8 @@ const Petweet = (props) => {
     });
   };
 
+  console.log("renderizou");
+
   useEffect(() => {
     const getUser = async (userId) => {
       try {
@@ -30,7 +32,7 @@ const Petweet = (props) => {
       }
     };
     getUser(post.userId);
-  }, []);
+  }, [post.userId]);
 
   return (
     <>

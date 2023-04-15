@@ -1,6 +1,6 @@
 import { Box } from "@chakra-ui/react";
-import { ReactComponent as Logo } from "../assets/images/logo.svg";
 import React from "react";
+import { ReactComponent as Logo } from "../assets/images/logo.svg";
 
 const Footer = () => {
   return (

@@ -1,6 +1,3 @@
-import React from "react";
-import Text from "./Text";
-import ProfilePic from "../assets/images/doggos/userpic.png";
 import {
   Box,
   Icon,
@@ -15,9 +12,12 @@ import {
   useDisclosure,
 } from "@chakra-ui/react";
 import { SignOut } from "@phosphor-icons/react";
+import React from "react";
+import { useAuth } from "../context/auth-context";
+import Text from "./Text";
 import Button from "./Button";
 import MenuLink from "./MenuLink";
-import { useAuth } from "../context/auth-context";
+import ProfilePic from "../assets/images/doggos/userpic.png";
 
 const SignOutLogo = () => {
   return <SignOut size={18} color="#00ACC1" />;

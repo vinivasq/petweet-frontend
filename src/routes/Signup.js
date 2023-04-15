@@ -1,13 +1,13 @@
+import { Box, FormControl, Input, Stack } from "@chakra-ui/react";
+import { NavLink, useNavigate } from "react-router-dom";
 import React from "react";
+import { useAuth } from "../context/auth-context";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
-import { NavLink, useNavigate } from "react-router-dom";
 import Text from "../components/Text";
 import Button from "../components/Button";
-import { Box, FormControl, Input, Stack } from "@chakra-ui/react";
 import Label from "../components/Label";
 import PasswordInput from "../components/PasswordInput";
-import { useAuth } from "../context/auth-context";
 
 const Signup = () => {
   const { signup, signin } = useAuth();
