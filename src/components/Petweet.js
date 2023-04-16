@@ -19,8 +19,6 @@ const Petweet = (props) => {
     });
   };
 
-  console.log("renderizou");
-
   useEffect(() => {
     const getUser = async (userId) => {
       try {
