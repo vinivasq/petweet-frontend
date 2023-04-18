@@ -5,49 +5,55 @@ import Home from "./routes/Home";
 import Signup from "./routes/Signup";
 import Profile from "./routes/Profile";
 import CreatePost from "./routes/CreatePost";
-import { PostProvider } from "./context/post-context";
+import { PostWrapper } from "./context/post-context";
 
 function App() {
   return (
     <AuthProvider>
-      <PostProvider>
-        <Routes>
-          <Route path="/login" element={<Login />} />
-          <Route path="/signup" element={<Signup />} />
-          <Route
-            path="/"
-            element={
-              <RequireAuth>
+      <Routes>
+        <Route path="/login" element={<Login />} />
+        <Route path="/signup" element={<Signup />} />
+        <Route
+          path="/"
+          element={
+            <RequireAuth>
+              <PostWrapper>
                 <Home />
-              </RequireAuth>
-            }
-          />
-          <Route
-            path="/home"
-            element={
-              <RequireAuth>
+              </PostWrapper>
+            </RequireAuth>
+          }
+        />
+        <Route
+          path="/home"
+          element={
+            <RequireAuth>
+              <PostWrapper>
                 <Home />
-              </RequireAuth>
-            }
-          />
-          <Route
-            path="/profile"
-            element={
-              <RequireAuth>
+              </PostWrapper>
+            </RequireAuth>
+          }
+        />
+        <Route
+          path="/profile"
+          element={
+            <RequireAuth>
+              <PostWrapper>
                 <Profile />
-              </RequireAuth>
-            }
-          />
-          <Route
-            path="/createPost"
-            element={
-              <RequireAuth>
+              </PostWrapper>
+            </RequireAuth>
+          }
+        />
+        <Route
+          path="/createPost"
+          element={
+            <RequireAuth>
+              <PostWrapper>
                 <CreatePost />
-              </RequireAuth>
-            }
-          />
-        </Routes>
-      </PostProvider>
+              </PostWrapper>
+            </RequireAuth>
+          }
+        />
+      </Routes>
     </AuthProvider>
   );
 }

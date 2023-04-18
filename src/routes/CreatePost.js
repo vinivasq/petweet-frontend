@@ -12,7 +12,7 @@ const CreatePost = () => {
   const { user } = useAuth();
   const location = useLocation();
   const navigate = useNavigate();
-  const { updatePosts } = usePost();
+  const { getFirstPosts } = usePost();
   const [count, setCount] = useState(0);
   const from = location.state?.from;
   let content = document.getElementById("content")?.value;
@@ -21,7 +21,7 @@ const CreatePost = () => {
     try {
       await createPost(data);
       content = "";
-      updatePosts();
+      getFirstPosts();
       navigate(from, { replace: true });
     } catch (error) {
       console.log(error);
