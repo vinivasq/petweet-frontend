@@ -8,13 +8,22 @@ export const PostProvider = ({ children }) => {
   const [cursor, setCursor] = useState(0);
   const [ref, setRef] = useState(null);
 
+  const updatePosts = async () => {
+    try {
+      const postsResponse = await getPosts();
+      setPosts(postsResponse.data.posts);
+      setCursor(postsResponse.data.myCursor);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   useEffect(() => {
     const getFirstPosts = async () => {
       try {
         const postsResponse = await getPosts();
         setPosts(postsResponse.data.posts);
         setCursor(postsResponse.data.myCursor);
-        console.log(cursor);
       } catch (error) {
         console.log(error);
         alert("Não foi possivel listar os Posts");
@@ -26,7 +35,6 @@ export const PostProvider = ({ children }) => {
         const morePosts = await getMorePosts(cursor);
         setPosts([...posts, ...morePosts.data.posts]);
         setCursor(morePosts.data.myCursor);
-        console.log(morePosts.data);
       } catch (error) {
         console.log(error);
       }
@@ -57,10 +65,10 @@ export const PostProvider = ({ children }) => {
     return () => {
       window.removeEventListener("scroll", handleScroll);
     };
-  }, [cursor, ref]);
+  }, [cursor, ref, posts]);
 
   return (
-    <PostContext.Provider value={{ posts, setRef }}>
+    <PostContext.Provider value={{ posts, setPosts, setRef, updatePosts }}>
       {children}
     </PostContext.Provider>
   );

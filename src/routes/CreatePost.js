@@ -6,11 +6,13 @@ import { createPost } from "../services/post";
 import Text from "../components/Text";
 import Button from "../components/Button";
 import ProfilePic from "../assets/images/doggos/userpic.png";
+import { usePost } from "../context/post-context";
 
 const CreatePost = () => {
   const { user } = useAuth();
   const location = useLocation();
   const navigate = useNavigate();
+  const { updatePosts } = usePost();
   const [count, setCount] = useState(0);
   const from = location.state?.from;
   let content = document.getElementById("content")?.value;
@@ -19,6 +21,7 @@ const CreatePost = () => {
     try {
       await createPost(data);
       content = "";
+      updatePosts();
       navigate(from, { replace: true });
     } catch (error) {
       console.log(error);
@@ -51,7 +54,7 @@ const CreatePost = () => {
           <Button
             borderRadius="0.625rem"
             onClick={() => {
-              handlePetweet({ userId: user.id, content });
+              handlePetweet({ userId: Number(user.id), content });
             }}
           >
             Petwittar
