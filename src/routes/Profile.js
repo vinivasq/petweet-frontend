@@ -33,7 +33,7 @@ const Profile = () => {
     return () => {
       setUser(null);
     };
-  }, [username, setRef, setUser]);
+  }, []);
 
   return (
     <>
