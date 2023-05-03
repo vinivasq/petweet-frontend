@@ -1,31 +1,60 @@
 import React, { createContext, useContext, useEffect, useState } from "react";
-import { getMorePosts, getPosts } from "../services/post";
+import {
+  getMorePosts,
+  getMoreUserPosts,
+  getPosts,
+  getUserPosts,
+} from "../services/post";
 
 const PostContext = createContext(null);
 
 export const PostProvider = ({ children }) => {
   const [posts, setPosts] = useState([]);
+  const [user, setUser] = useState(null);
   const [cursor, setCursor] = useState(0);
   const [ref, setRef] = useState(null);
 
   const getFirstPosts = async () => {
-    try {
-      const postsResponse = await getPosts();
-      setPosts(postsResponse.data.posts);
-      setCursor(postsResponse.data.myCursor);
-    } catch (error) {
-      console.log(error);
-      alert("Não foi possivel listar os Posts");
+    if (user) {
+      try {
+        const userPosts = await getUserPosts(user.id);
+        setPosts(userPosts.data.posts);
+        console.log(userPosts.data.posts);
+        setCursor(userPosts.data.myCursor);
+      } catch (error) {
+        alert("Não foi possivel listar os Posts");
+        console.log(error);
+      }
+    } else {
+      try {
+        const postsResponse = await getPosts();
+        setPosts(postsResponse.data.posts);
+        setCursor(postsResponse.data.myCursor);
+      } catch (error) {
+        console.log(error);
+        alert("Não foi possivel listar os Posts");
+      }
     }
   };
 
   const loadMorePosts = async () => {
-    try {
-      const morePosts = await getMorePosts(cursor);
-      setPosts([...posts, ...morePosts.data.posts]);
-      setCursor(morePosts.data.myCursor);
-    } catch (error) {
-      console.log(error);
+    if (user) {
+      try {
+        const moreUserPosts = await getMoreUserPosts(cursor, user.id);
+        setPosts([...posts, ...moreUserPosts.data.posts]);
+        console.log(moreUserPosts.data.posts);
+        setCursor(moreUserPosts.data.myCursor);
+      } catch (error) {
+        console.log(error);
+      }
+    } else {
+      try {
+        const morePosts = await getMorePosts(cursor);
+        setPosts([...posts, ...morePosts.data.posts]);
+        setCursor(morePosts.data.myCursor);
+      } catch (error) {
+        console.log(error);
+      }
     }
   };
 
@@ -45,18 +74,20 @@ export const PostProvider = ({ children }) => {
   };
 
   useEffect(() => {
+    getFirstPosts();
+  }, [ref, user]);
+
+  useEffect(() => {
+    console.log(`cursor global: ${cursor}`);
+    // console.log(`cursor user: ${userCursor}`);
     window.addEventListener("scroll", handleScroll);
     return () => {
       window.removeEventListener("scroll", handleScroll);
     };
-  }, [cursor, ref]);
-
-  if (!cursor) {
-    getFirstPosts();
-  }
+  }, [cursor]);
 
   return (
-    <PostContext.Provider value={{ posts, setPosts, setRef, getFirstPosts }}>
+    <PostContext.Provider value={{ posts, user, setUser, setRef }}>
       {children}
     </PostContext.Provider>
   );

@@ -6,6 +6,7 @@ export const getPosts = () => client.get("/post");
 
 export const getMorePosts = (cursor) => client.get(`/post?cursor=${cursor}`);
 
-export const getUserPosts = (userId) => client.get(`/post?userId=${userId}`);
+export const getMoreUserPosts = (cursor, userId) =>
+  client.get(`/post?cursor=${cursor}&userId=${userId}`);
 
-export const getPost = (id) => client.get(`/post?id=${id}`);
+export const getUserPosts = (userId) => client.get(`/post?userId=${userId}`);
