@@ -87,7 +87,9 @@ export const PostProvider = ({ children }) => {
   }, [cursor]);
 
   return (
-    <PostContext.Provider value={{ posts, user, setUser, setRef }}>
+    <PostContext.Provider
+      value={{ posts, user, setUser, setRef, getFirstPosts }}
+    >
       {children}
     </PostContext.Provider>
   );
