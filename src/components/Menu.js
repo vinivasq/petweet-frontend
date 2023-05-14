@@ -1,13 +1,13 @@
 import {
+  AlertDialog,
+  AlertDialogBody,
+  AlertDialogContent,
+  AlertDialogFooter,
+  AlertDialogHeader,
+  AlertDialogOverlay,
   Box,
   Icon,
   Image,
-  Modal,
-  ModalBody,
-  ModalContent,
-  ModalFooter,
-  ModalHeader,
-  ModalOverlay,
   Stack,
   useDisclosure,
 } from "@chakra-ui/react";
@@ -74,24 +74,24 @@ const Menu = () => {
           </MenuLink>
         </Box>
       </nav>
-      <Modal isOpen={isOpen} onClose={onClose}>
-        <ModalOverlay />
-        <ModalContent
+      <AlertDialog isOpen={isOpen} onClose={onClose}>
+        <AlertDialogOverlay />
+        <AlertDialogContent
           padding="1rem"
           display="flex"
           flexDirection="column"
           gap="1rem"
           maxWidth="95%"
         >
-          <ModalHeader padding={0}>
+          <AlertDialogHeader padding={0}>
             <Text as="h2" fontWeight="600" fontSize="1.5rem">
               Sair desta conta?
             </Text>
-          </ModalHeader>
-          <ModalBody padding={0}>
+          </AlertDialogHeader>
+          <AlertDialogBody padding={0}>
             <Text>Deseja realmente sair desta conta?</Text>
-          </ModalBody>
-          <ModalFooter
+          </AlertDialogBody>
+          <AlertDialogFooter
             padding={0}
             marginTop="1rem"
             display="flex"
@@ -111,9 +111,9 @@ const Menu = () => {
             <Button borderRadius="0.625rem" onClick={onClose} width="50%">
               Cancelar
             </Button>
-          </ModalFooter>
-        </ModalContent>
-      </Modal>
+          </AlertDialogFooter>
+        </AlertDialogContent>
+      </AlertDialog>
     </Box>
   );
 };
