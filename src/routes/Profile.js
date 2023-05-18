@@ -32,8 +32,9 @@ const Profile = () => {
 
     return () => {
       setUser(null);
+      setLoading(true);
     };
-  }, []);
+  }, [location]);
 
   return (
     <>

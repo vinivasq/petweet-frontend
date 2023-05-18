@@ -7,17 +7,17 @@ import React, { useEffect, useState } from "react";
 import { getUserById } from "../services/user";
 import Text from "./Text";
 
+const timeAgo = (date) => {
+  return formatDistanceToNow(new Date(date), {
+    addSuffix: true,
+    locale: ptBR,
+  });
+};
+
 const Petweet = (props) => {
   const { image, post } = props;
   const [user, setUser] = useState(null);
   const [isLoading, setLoading] = useState(true);
-
-  const timeAgo = (date) => {
-    return formatDistanceToNow(new Date(date), {
-      addSuffix: true,
-      locale: ptBR,
-    });
-  };
 
   useEffect(() => {
     const getUser = async (userId) => {
@@ -29,6 +29,7 @@ const Petweet = (props) => {
         console.log(error);
       }
     };
+
     getUser(post.userId);
   }, [post.userId]);
 

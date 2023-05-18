@@ -13,7 +13,7 @@ const Home = () => {
 
   useEffect(() => {
     setRef(postListRef);
-  }, [setRef]);
+  }, []);
 
   return (
     <>
